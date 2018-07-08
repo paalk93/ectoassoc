@@ -1,0 +1,32 @@
+<div class="sq-main-layout">
+  <div class="sq-products-layout-area-header sq-panel sq-justify-center sq-mb-1" style="width:100%">
+      <h2 class="sq-text-center">Products</h2>
+  </div>
+  <div class="sq-panel sq-products-search-layout-area-panel">
+    <p class="sq-justify-center">Placeholder for sort function</p>
+  </div>
+  <%= form_for @conn, products_path(@conn, :index), [method: :get], fn f -> %>
+  <%= search_input f, :query %>
+  <%= submit "Search" %>
+  <% end %>
+  <div class="sq-products-table-layout-area-panel"style="padding:0">
+    <div class="sq-air-y-1 sq-panel sq-flex-wrap sq-justify-space-evenly">
+
+      <%= for product <-@products do %>
+       <div class="sq-product-card sq-card">
+        <div class="sq-card-header sq-text-center">
+          <p><%= product.name %></p>
+        </div>
+        <div class="sq-card-body sq-flexbox-row sq-align-center sq-justify-center">
+          <img src="/images/user.png" class="sq-product-img">
+        </div>
+        <div class="sq-card-footer sq-text-center">
+          <p class="sq-display-inline-block"><%= product.base_price %>-,</p>
+          <button class="sq-margin-05"><%= link "Show", to: products_path(@conn, :show, product), class: "sq-nounderline sq-text-base" %></button>
+          <button>Buy</button>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="sq-main-layout">
+  <div Style="grid-area:  1 / 2 / span 5 / span 7;">
+    
+    <button><%= link "Add Product", to: admin_prod_path(@conn, :new), class: "sq-nounderline sq-text-base sq-padding-2" %></button>
+    <table class="sq-mt-1 sq-border-collapse sq-tables sq-table-hover sq-table-misc-arrow-up sq-custom-table-position">
+      <tr>
+        <th>Product ID</th>
+        <th>Product name</th>
+        <th>Product summary</th>
+        <th>Price</th>
+        <th colspan="2">Change</th>
+      </tr>
+      <%= for product <- @products do %>
+      <tr onclick="toggleModal4()">
+        <td class="sq-table-row-padding-05"><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.summary %></td>
+        <td><%= product.base_price %></td>
+        <td><button><%= link "Delete", to: admin_prod_path(@conn, :delete, product), method: :delete, data: [confirm: "Are you sure?"], class: "sq-nounderline sq-text-base", style: "color:red;" %></button></td>
+        <td><button><%= link "Edit", to: admin_prod_path(@conn, :edit, product), class: "sq-nounderline sq-text-base", style: "color:blue;" %></button></td>
+      </tr>
+      <% end %>
+    </table>
+    <button><%= link "Add Product", to: admin_prod_path(@conn, :new), class: "sq-nounderline sq-text-base sq-padding-2" %></button>
+
+  </div>
+</div>
