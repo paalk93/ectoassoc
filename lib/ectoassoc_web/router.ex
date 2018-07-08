@@ -15,7 +15,7 @@ defmodule EctoassocWeb.Router do
 
   scope "/", EctoassocWeb do
     pipe_through :browser # Use the default browser stack
-
+    resources "/adminuser", AdminuserController
     get "/", PageController, :index
   end
 

@@ -1,0 +1,31 @@
+<table style="text-align:center; border: 1px solid black">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for user <- @users do %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.fname %></td>
+      <td><%= user.lname %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.email %></td>
+      <%= for adress <- user.adress do %>
+      <td><%= adress.country %></td>
+      <% end %>
+      <td><%= link "Show", to: adminuser_path(@conn, :show, user) %></td>
+
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
+
+<span><%= link "New User", to: adminuser_path(@conn, :new) %></span>

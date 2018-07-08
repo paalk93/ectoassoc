@@ -1,0 +1,50 @@
+<h2>Show User</h2>
+
+<ul>
+
+  <li>
+    <strong>ID</strong>
+    <%= @user.id %>
+  </li>
+
+  <li>
+    <strong>Fname:</strong>
+    <%= @user.fname %>
+  </li>
+
+  <li>
+    <strong>Lname:</strong>
+    <%= @user.lname %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @user.phone %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Adress:</strong>
+    <%= @adress.adress %>
+  </li>
+
+  <li>
+    <strong>Post Number:</strong>
+    <%= @adress.post_number %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @adress.city %>
+  </li>
+
+  <li>
+    <strong>Country:</strong>
+    <%= @adress.country %>
+  </li>
+
+</ul>
