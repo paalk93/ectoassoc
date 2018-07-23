@@ -38,6 +38,33 @@ defmodule EctoassocWeb.AdminuserController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+  user = Identity.get_user!(id)
+  changeset = Identity.change_user(user)
+  render(conn, "edit.html", user: user, changeset: changeset)
+end
+
+def update(conn, %{"id" => id, "user" => user_params}) do
+  user = Identity.get_user!(id)
+
+  case Identity.update_user(user, user_params) do
+    {:ok, user} ->
+      conn
+      |> put_flash(:info, "User updated successfully.")
+      |> redirect(to: adminuser_path(conn, :show, user))
+    {:error, %Ecto.Changeset{} = changeset} ->
+      render(conn, "edit.html", user: user, changeset: changeset)
+  end
+end
+
+def delete(conn, %{"id" => id}) do
+  user = Identity.get_user!(id)
+  {:ok, _user} = Identity.delete_user(user)
+  conn
+  |> put_flash(:info, "User deleted successfully.")
+  |> redirect(to: adminuser_path(conn, :index))
+end
+
 
 
  end

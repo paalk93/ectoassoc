@@ -21,7 +21,8 @@
       <td><%= adress.country %></td>
       <% end %>
       <td><%= link "Show", to: adminuser_path(@conn, :show, user) %></td>
-
+      <td><%= link "Edit", to: adminuser_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></td>
+      <td><%= link "Delete", to: adminuser_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></td>
     </tr>
     <% end %>
 

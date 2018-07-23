@@ -48,3 +48,4 @@
   </li>
 
 </ul>
+<span><%= link "Back", to: adminuser_path(@conn, :index) %></span>
